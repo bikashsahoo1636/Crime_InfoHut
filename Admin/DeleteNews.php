@@ -7,6 +7,7 @@ if (!isset($_SESSION)) {
     }
 }
 ?>
+<?php require_once('../Connections/CMS.php'); ?>
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -17,15 +18,15 @@ if (!isset($_SESSION)) {
 <?php
 $Id = $_GET['NewsId'];
 // Establish Connection with MYSQL
-$con = mysqli_connect("localhost", "root","");
+
 // Select Database
-mysqli_select_db($con, "cms");
+mysqli_select_db($CMS ,$database_CMS);
 // Specify the query to Insert Record
 $sql = "DELETE from news_tbl where News_Id='" . $Id . "'";
 // execute query
-mysqli_query($con, $sql);
+mysqli_query($CMS, $sql);
 // Close The Connection
-mysqli_close($con);
+mysqli_close($CMS);
 echo '<script type="text/javascript">alert("News Deleted Succesfully");window.location=\'News.php\';</script>';
 ?>
     </body>

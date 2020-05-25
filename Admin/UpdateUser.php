@@ -8,6 +8,7 @@ if (!isset($_SESSION)) {
 }
 ?>
 
+<?php require_once('../Connections/CMS.php'); ?>
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -20,15 +21,15 @@ $Id = $_GET['Id'];
 $Name = $_POST['txtName'];
 $Password = $_POST['txtPass'];
 // Establish Connection with MYSQL
-$con = mysqli_connect("localhost", "root","");
+
 // Select Database
-mysqli_select_db($con,"cms");
+mysqli_select_db($CMS ,$database_CMS);
 // Specify the query to Update Record
 $sql = "UPDATE admin_tbl set Admin_Name='" . $Name . "',Admin_Password='" . $Password . "' where Admin_Id=" . $Id . "";
 // Execute query
-mysqli_query($con,$sql);
+mysqli_query($CMS,$sql);
 // Close The Connection
-mysqli_close($con);
+mysqli_close($CMS);
 echo '<script type="text/javascript">alert("User Updated Succesfully");window.location=\'User.php\';</script>';
 ?>
     </body>

@@ -132,13 +132,13 @@ $totalRows_Recordset1 = mysqli_num_rows($Recordset1);
                                     </tr>
                                     <?php
 // Establish Connection with Database
-                                    $con = mysqli_connect("localhost", "root","");
+                                
 // Select Database
-                                    mysqli_select_db($con,"cms");
+                                    mysqli_select_db($CMS ,$database_CMS);
 // Specify the query to execute
                                     $sql = "SELECT * from complaint_tbl where User_Id='" . $_SESSION['ID'] . "'";
 // Execute query
-                                    $result = mysqli_query($con,$sql);
+                                    $result = mysqli_query($CMS,$sql);
 // Loop through each records 
                                     while ($row = mysqli_fetch_array($result)) {
                                         $Id = $row['Complaint_Id'];
@@ -163,7 +163,7 @@ $totalRows_Recordset1 = mysqli_num_rows($Recordset1);
                                     ?>
                                     <?php
 // Close the connection
-                                    mysqli_close($con);
+                                    mysqli_close($CMS);
                                     ?>
                                 </table>
                             </div>

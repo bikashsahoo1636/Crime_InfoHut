@@ -7,6 +7,8 @@ if (!isset($_SESSION)) {
     }
 }
 ?>
+
+<?php require_once('../Connections/CMS.php'); ?>
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -19,15 +21,15 @@ $UserName = $_POST['txtUserName'];
 $Password = $_POST['txtPassword'];
 
 // Establish Connection with MYSQL
-$con = mysqli_connect("localhost", "root","");
+
 // Select Database
-mysqli_select_db($con,"cms");
+mysqli_select_db($CMS ,$database_CMS);
 // Specify the query to Insert Record
 $sql = "INSERT into admin_tbl(`Admin_Name`,`Admin_Password`) values('" . $UserName . "','" . $Password . "')";
 // execute query
-mysqli_query($con,$sql);
+mysqli_query($CMS,$sql);
 // Close The Connection
-mysqli_close($con);
+mysqli_close($CMS);
 echo '<script type="text/javascript">alert("User Inserted Succesfully");window.location=\'User.php\';</script>';
 ?>
     </body>

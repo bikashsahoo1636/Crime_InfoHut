@@ -7,6 +7,8 @@ if (!isset($_SESSION)) {
     }
 }
 ?>
+
+<?php require_once('../Connections/CMS.php'); ?>
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -35,13 +37,13 @@ include "Header.php"
             <?php
             $Id = $_GET['UserId'];
 // Establish Connection with Database
-            $con = mysqli_connect("localhost", "root","");
+            
 // Select Database
-            mysqli_select_db($con,"cms");
+            mysqli_select_db($CMS ,$database_CMS);
 // Specify the query to execute
             $sql = "SELECT * from admin_tbl where Admin_Id=" . $Id . "";
 // Execute query
-            $result = mysqli_query($con,$sql);
+            $result = mysqli_query($CMS,$sql);
 // Loop through each records 
             while ($row = mysqli_fetch_array($result)) {
                 $Id = $row['Admin_Id'];
@@ -82,7 +84,7 @@ include "Header.php"
                     </form>
 <?php
 // Close the connection
-mysqli_close($con);
+mysqli_close($CMS);
 ?>
                     <p>&nbsp;</p>
                     <div class="cleaner"></div>

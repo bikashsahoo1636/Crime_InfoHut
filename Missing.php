@@ -1,3 +1,5 @@
+<?php require_once('Connections/CMS.php'); ?>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
@@ -24,13 +26,13 @@
                     <h2>Missing Persons</h2>
                     <?php
 // Establish Connection with Database
-                    $con = mysqli_connect("localhost", "root","");
+                    
 // Select Database
-                    mysqli_select_db($con,"cms");
+                    mysqli_select_db($CMS ,$database_CMS);
 // Specify the query to execute
                     $sql = "SELECT * from missingperson_tbl order by Station_Name";
 // Execute query
-                    $result = mysqli_query( $con,$sql);
+                    $result = mysqli_query( $CMS,$sql);
 // Loop through each records 
                     while ($row = mysqli_fetch_array($result)) {
                         $Id = $row['Person_Id'];
@@ -81,7 +83,7 @@
                         <?php
                     }
 // Close the connection
-                    mysqli_close($con);
+                    mysqli_close($CMS);
                     ?>
                     <p>&nbsp;</p>
                     <p>&nbsp;</p>

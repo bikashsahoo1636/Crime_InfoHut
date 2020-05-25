@@ -3,6 +3,8 @@ if (!isset($_SESSION)) {
     session_start();
 }
 ?>
+
+<?php require_once('../Connections/CMS.php'); ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
@@ -24,15 +26,15 @@ include "Header.php"
 $Id = $_GET['Id'];
 
 // Establish Connection with MYSQL
-$con = mysqli_connect("localhost", "root","");
+
 // Select Database
-mysqli_select_db($con,"cms");
+mysqli_select_db($CMS ,$database_CMS);
 // Specify the query to Update Record
 $sql = "UPDATE complaint_tbl set Status='Processed' where Complaint_Id=" . $Id . "";
 // Execute query
-mysqli_query($con,$sql);
+mysqli_query($CMS,$sql);
 // Close The Connection
-mysqli_close($con);
+mysqli_close($CMS);
 echo '<script type="text/javascript">alert("Complaint Processed Succesfully");window.location=\'Complains.php\';</script>';
 ?>
 

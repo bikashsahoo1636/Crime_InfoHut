@@ -3,6 +3,8 @@ if (!isset($_SESSION)) {
     session_start();
 }
 ?>
+
+<?php require_once('../Connections/CMS.php'); ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
@@ -28,15 +30,15 @@ if (!isset($_SESSION)) {
     $StationName = $_SESSION['Name'];
     move_uploaded_file($_FILES["txtFile"]["tmp_name"], "../Documents/" . $_FILES["txtFile"]["name"]);
     // Establish Connection with MYSQL
-    $con = mysqli_connect("localhost", "root","");
+    
     // Select Database
-    mysqli_select_db($con,"cms");
+    mysqli_select_db($CMS ,$database_CMS);
     // Specify the query to Insert Record
     $sql = "INSERT into missingperson_tbl (`First_Name`,`Middle_Name`,`Last_Name`,`Gender`,`Birth_Date`,`Weight`,`Height`,`Contact_Person`,`Contact_Address`,`Contact_City`,`Contact_Mobile`,`Photo`,`Station_Name`) values('" . $txtFName . "','" . $txtMName . "','" . $txtLName . "','" . $cmbGender . "','" . $txtBDate . "','" . $txtWeight . "','" . $txtHeight . "','" . $txtCPName . "','" . $txtCPAdd . "','" . $cmbCity . "','" . $txtCPMobile . "','" . $path1 . "','" . $StationName . "')";
     // execute query
-    mysqli_query($con,$sql);
+    mysqli_query($CMS,$sql);
     // Close The Connection
-    mysqli_close($con);
+    mysqli_close($CMS);
 
     echo '<script type="text/javascript">alert("Missing Person Inserted Succesfully");window.location=\'Missing.php\';</script>';
 //} else {

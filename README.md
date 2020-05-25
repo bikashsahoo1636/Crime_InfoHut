@@ -24,7 +24,7 @@ Steps to run the Program :
   3. Paste in xampp/htdocs (for windows)/ in var/www/html (for ubuntu 16.04).
   4. Open a browser and go to URL “http://localhost/phpmyadmin/”.
   5. Then click on the Databases tab.
-  6. Create a database naming “cms” and then click on the import tab.(If you wish to change the name of the database then you have to change the name in this directory also which would be hiatus.)
+  6. Create a database naming “cms” and then click on the import tab.(If you wish to change the name of the database then you have to change the name in CMS.php inside the Connections folder.)
   7. Click on browse file and select “cms.sql” file which is inside the “crime_infohut” folder.
   8. Click on go.
 
@@ -33,8 +33,8 @@ Steps to run the Program :
   9. Open a browser and go to URL “http://localhost/crime_infohut/”.
 
 Special Precautions ::
-  Here, I am assuming your MySQL account username is root as I was using the root account and the password is NULL ,i.e. "".However, if you have some different username or password or both then you have to change it in multiple areas,i.e. all the areas where MySQL connection has been made.Sorry for the inconvenience.
+  Here, I am assuming your MySQL account username is root as I was using the root account and the password is NULL ,i.e. "".However, if you have some different username or password or both then you can change the same in CMS.php which is present inside the Connections folder.
 
-
+Thanks A Lot.
 
 Made by Bikash Sahoo

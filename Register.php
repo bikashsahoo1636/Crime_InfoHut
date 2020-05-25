@@ -38,7 +38,7 @@ $totalRows_Recordset1 = mysqli_num_rows($Recordset1);
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <title>Crime Management System</title>
+        <title>Crime InfoHut</title>
         <link href="templatemo_style.css" rel="stylesheet" type="text/css" />
         <style type="text/css">
             <!--
